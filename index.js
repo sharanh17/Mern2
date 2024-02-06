@@ -1,5 +1,9 @@
 const express =require('express');
-const {data}=require('./DB/currency.json')
+// const {data}=require('./DB/currency.json')
+// const {data}=require('../DB/users.json');
+const getCurrenciesBySymbol =require('./controllers/currency.controller')
+const {getUsers ,getUserById,getbyQuery} =require('./controllers/users.controller')
+
 
 const app=express();
 
@@ -16,16 +20,13 @@ app.get('/currencies',(req,res)=>{
     res.end();
    })
 
-   app.get('/currencies/:symbol',(req,res)=>{
-    const {symbol}=req.params;
-    const result=data.find((elem)=>elem.id.toLocaleLowerCase()===symbol.toLocaleLowerCase())
-    console.log(req.params)
-    if(result){
-        res.json(result)
-    }else{
-        res.sendStatus(404);
-    }
-   })
+   app.get("/currencies/:symbol",getCurrenciesBySymbol);
+
+   app.get('/users',getUsers);
+
+   app.get("/users/:uuid",getUserById);
+
+   app.get('/users/search',getbyQuery)
 
    app.get("*",(req,res)=>{
     res.send("BKC")
