@@ -12,4 +12,10 @@ const getCurrencieseBySymbol=(req,res)=>{
     }
    }
 
-   module.exports = getCurrencieseBySymbol ;
+   const getCurrencies=(req,res)=>{
+    
+    res.json(data)
+    res.end();
+   }
+
+   module.exports ={getCurrencieseBySymbol,getCurrencies}  ;
