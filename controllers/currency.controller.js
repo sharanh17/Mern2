@@ -1,7 +1,16 @@
+
+
 const {data}=require("../DB/currency.json");
 
 
+
+
+
 const getCurrencieseBySymbol=(req,res)=>{
+    // if(!verifyAyth(req))
+    // {
+    //  return res.status(403).json({message:"Unauthorized Request"})
+    // }
     const {symbol}=req.params;
     const result=data.find((elem)=>elem.id.toLocaleLowerCase()===symbol.toLocaleLowerCase())
     console.log(req.params)

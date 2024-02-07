@@ -1,5 +1,5 @@
 const {data} =require('../DB/users.json')
-const{getQueryError}=require('../validators/users.validators')
+
 
 
 const getUsers=(req,res)=>{
@@ -27,10 +27,10 @@ const getbyQuery=(req,res)=>{
     console.log("Inside getUserByQuery")
     const {gender,age }=req.query;
 
-    const error=getQueryError({age,gender});
-    if(error){
-        res.status(422).json(error)
-    }
+    // const error=getQueryError({age,gender});
+    // if(error){
+    //     res.status(422).json(error)
+    // }
 
     if(gender && age){
         const result=data.filter((item)=>item.gender==gender && Number(item.dob.age)>=Number(age)
